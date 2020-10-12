@@ -63,7 +63,7 @@ class Acf_Front_End_Editor_Public
      */
     public function enqueue_styles()
     {
-        if (is_user_logged_in()):
+        if (is_user_logged_in() && !is_customize_preview()):
             wp_enqueue_style($this->plugin_name . '-medium', plugin_dir_url(__FILE__) . 'css/medium-editor.min.css', array (), $this->version, 'all');
             wp_enqueue_style($this->plugin_name . '-theme', plugin_dir_url(__FILE__) . 'css/themes/default.css', array (), $this->version, 'all');
             wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/acf-front-end-editor-public.css', array (), $this->version, 'all');
@@ -77,8 +77,7 @@ class Acf_Front_End_Editor_Public
      */
     public function enqueue_scripts()
     {
-
-        if (is_user_logged_in()):
+        if (is_user_logged_in() && !is_customize_preview()):
             wp_register_script($this->plugin_name . '-medium', plugin_dir_url(__FILE__) . 'js/medium-editor.min.js', array ('jquery'), $this->version, false);
             wp_register_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/acf-front-end-editor-public.js', array ('jquery'), $this->version, false);
             wp_localize_script($this->plugin_name, 'meta', array (
@@ -124,7 +123,7 @@ class Acf_Front_End_Editor_Public
     {
         $key = $field['key'];
         $label = $field['name'];
-        $value = '<div contenteditable class="editableHD" data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $field['key'] . '"><p></p>' . $value . '</div>';
+        $value = '<div contenteditable class="editableHD" data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $key . '"><p></p>' . $value . '</div>';
         return $value;
     }
 
@@ -215,7 +214,7 @@ class Acf_Front_End_Editor_Public
      */
     public function register_filters()
     {
-        if (is_user_logged_in() && !is_admin() && $this->user_has_capabilities(get_option($this->option_name . '_capabilities'))):
+        if (!is_customize_preview() && is_user_logged_in() && !is_admin() && $this->user_has_capabilities(get_option($this->option_name . '_capabilities'))):
             add_filter('acf/load_value/type=text', array ($this, 'acf_targeter'), 10, 3);
             add_filter('acf/load_value/type=textarea', array ($this, 'acf_targeter'), 10, 3);
             add_filter('acf/load_value/type=wysiwyg', array ($this, 'acf_wysiwyg_targeter'), 10, 3);
