@@ -19,36 +19,38 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-	die;
+if (!defined('WPINC')) {
+    die;
 }
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-acf-front-end-editor-activator.php
  */
-function activate_acf_front_end_editor() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-acf-front-end-editor-activator.php';
-	Acf_Front_End_Editor_Activator::activate();
+function activate_acf_front_end_editor()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-acf-front-end-editor-activator.php';
+    Acf_Front_End_Editor_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-acf-front-end-editor-deactivator.php
  */
-function deactivate_acf_front_end_editor() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-acf-front-end-editor-deactivator.php';
-	Acf_Front_End_Editor_Deactivator::deactivate();
+function deactivate_acf_front_end_editor()
+{
+    require_once plugin_dir_path(__FILE__) . 'includes/class-acf-front-end-editor-deactivator.php';
+    Acf_Front_End_Editor_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_acf_front_end_editor' );
-register_deactivation_hook( __FILE__, 'deactivate_acf_front_end_editor' );
+register_activation_hook(__FILE__, 'activate_acf_front_end_editor');
+register_deactivation_hook(__FILE__, 'deactivate_acf_front_end_editor');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-acf-front-end-editor.php';
+require plugin_dir_path(__FILE__) . 'includes/class-acf-front-end-editor.php';
 
 /**
  * Begins execution of the plugin.
@@ -59,10 +61,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-acf-front-end-editor.php';
  *
  * @since    1.0.0
  */
-function run_acf_front_end_editor() {
-
-	$plugin = new Acf_Front_End_Editor();
-	$plugin->run();
-
+function run_acf_front_end_editor()
+{
+    $plugin = new Acf_Front_End_Editor();
+    $plugin->run();
 }
+
 run_acf_front_end_editor();

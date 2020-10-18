@@ -1,17 +1,33 @@
- [contenteditable] {outline: none !important;}
- #wpadminbar #wp-admin-bar-edit-live>.ab-item:before{content: '\f464';top: 2px;}
+[contenteditable] {
+    outline: none !important;
+}
+
+#wpadminbar #wp-admin-bar-edit-live > .ab-item:before {
+    content: '\f464';
+    top: 2px;
+}
+
+#frontend-editor {
+    border-left: 1px solid #666666;
+    float: left;
+    border-right: 1px solid #666666;
+}
+
+#frontend-editor .child-element {
+    display: none;
+}
 
 .hd-pop {
-  position: fixed;
-  min-width: 300px;
-  background: rgba(0, 0, 0, 0.72);
-  color: #FBFBFB;
-  line-height: 50px;
-  font-weight: 700;
-  top: 20px;
-  right: 20px;
-  border-radius: 6px;
-  padding: 10px 30px;
-  font-size: 16px;
-  z-index: 999;
+    position: fixed;
+    min-width: 200px;
+    background: rgba(0, 0, 0, 0.72);
+    color: #FBFBFB;
+    line-height: 50px;
+    font-weight: 700;
+    top: 10px;
+    right: 20px;
+    border-radius: 6px;
+    padding: 0 20px;
+    font-size: 16px;
+    z-index: 999;
 }

@@ -123,7 +123,7 @@ class Acf_Front_End_Editor_Public
     {
         $key = $field['key'];
         $label = $field['name'];
-        $value = '<div contenteditable class="editableHD" data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $key . '"><p></p>' . $value . '</div>';
+        $value = '<div contenteditable="false" class="editableHD" data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $key . '"><p></p>' . $value . '</div>';
         return $value;
     }
 
