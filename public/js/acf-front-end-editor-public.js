@@ -84,7 +84,26 @@
         init: function () {
             var textInputs = $('[contenteditable]');
             var elements = document.querySelectorAll('.editableHD');
-            var editor = new MediumEditor(elements);
+            var editor = new MediumEditor(elements, {
+                    toolbar: {
+                        buttons: [
+                            'bold',
+                            'italic',
+                            'underline',
+                            'anchor',
+                            'h2',
+                            'h3',
+                            'unorderedlist',
+                            'orderedlist',
+                            // 'fontsize',
+                            // 'justifyCenter',
+                            // 'justifyRight',
+                            // 'justifyLeft',
+                            // 'removeFormat'
+                        ]
+                    }
+                }
+            );
             acfVars.textInputs = textInputs;
             textInputs.each(function () {
                 var contents = $(this).html();
