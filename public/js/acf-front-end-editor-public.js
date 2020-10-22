@@ -56,15 +56,22 @@
             if (window.frontend_editor_is_initialized) {
                 $('#wp-admin-bar-enable_fe').addClass('is-active');
                 initEditor.init();
+            } else {
+                $('d[data-name="wp_hd_title"]').attr('contenteditable', false);
+                $('div[data-name="wp_hd_content"]').attr('contenteditable', false);
             }
 
             $('#wp-admin-bar-enable_fe').click(function () {
                 if ($(this).hasClass('is-active')) {
+                    $('.menu-item d[data-name="wp_hd_title"]').attr('contenteditable', false);
+                    $('div[data-name="wp_hd_content"]').attr('contenteditable', false);
                     $('#frontend-editor .child-element').hide();
                     $(this).removeClass('is-active');
                     $(this).find('a').text('Enable F-end Editor');
                     acfVars.textInputs.attr('contenteditable', false)
                 } else {
+                    $('.menu-item d[data-name="wp_hd_title"]').attr('contenteditable', true);
+                    $('div[data-name="wp_hd_content"]').attr('contenteditable', true);
                     $('#frontend-editor .child-element').show();
                     $(this).addClass('is-active');
                     $(this).find('a').text('Disable F-end Editor');
