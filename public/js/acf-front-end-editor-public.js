@@ -46,7 +46,7 @@
 
     window.frontend_editor_is_initialized = false;
     var acfVars = {
-        links: true,
+        links: false,
         outline: false,
         textInputs: null,
         init: function () {
@@ -63,6 +63,8 @@
 
             $('#wp-admin-bar-enable_fe').click(function () {
                 if ($(this).hasClass('is-active')) {
+                    $('a[href]').removeClass('hd-disable-acf-links');
+                    $('button').removeClass('hd-disable-acf-links');
                     $('.menu-item d[data-name="wp_hd_title"]').attr('contenteditable', false);
                     $('div[data-name="wp_hd_content"]').attr('contenteditable', false);
                     $('#frontend-editor .child-element').hide();
@@ -70,17 +72,19 @@
                     $(this).find('a').text('Enable F-end Editor');
                     acfVars.textInputs.attr('contenteditable', false)
                 } else {
+                    $('a[href]').addClass('hd-disable-acf-links');
+                    $('button').addClass('hd-disable-acf-links');
                     $('.menu-item d[data-name="wp_hd_title"]').attr('contenteditable', true);
                     $('div[data-name="wp_hd_content"]').attr('contenteditable', true);
                     $('#frontend-editor .child-element').show();
                     $(this).addClass('is-active');
                     $(this).find('a').text('Disable F-end Editor');
+                    if (!window.frontend_editor_is_initialized) {
+                        window.frontend_editor_is_initialized = true;
+                        initEditor.init();
+                    }
                     if (acfVars.textInputs !== null) {
                         acfVars.textInputs.attr('contenteditable', true)
-                    }
-                    if (!frontend_editor_is_initialized) {
-                        frontend_editor_is_initialized = true;
-                        initEditor.init();
                     }
                 }
             });
@@ -143,18 +147,18 @@
             });
         },
         initLinks: function () {
-            utils.navButton('wp-admin-bar-toggle-actions', 'Disable links', 'child-element');
+            utils.navButton('wp-admin-bar-toggle-actions', 'Enable links', 'child-element');
             $('#wp-admin-bar-root-default').on('click', '#wp-admin-bar-toggle-actions', function () {
-                if (acfVars.links) {
-                    $(this).find('a').text('Enable links');
-                    acfVars.links = false;
-                    acfVars.textInputs.parent('a').addClass('hd-disable-acf-links').css('cursor', 'text');
-                    acfVars.textInputs.parent('button').addClass('hd-disable-acf-links').css('cursor', 'text');
-                } else {
+                if (!acfVars.links) {
                     $(this).find('a').text('Disable links');
                     acfVars.links = true;
-                    acfVars.textInputs.parent('a').removeClass('hd-disable-acf-links').css('cursor', 'auto');
-                    acfVars.textInputs.parent('button').removeClass('hd-disable-acf-links').css('cursor', 'auto');
+                    $('a[href]').removeClass('hd-disable-acf-links');
+                    $('button').removeClass('hd-disable-acf-links');
+                } else {
+                    $(this).find('a').text('Enable links');
+                    acfVars.links = false;
+                    $('a[href]').addClass('hd-disable-acf-links');
+                    $('button').addClass('hd-disable-acf-links');
                 }
             });
 
