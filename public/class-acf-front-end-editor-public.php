@@ -50,7 +50,7 @@ class Acf_Front_End_Editor_Public
      */
     public function __construct($plugin_name, $version)
     {
-
+        $this->exluded_keys = [];
         $this->plugin_name = $plugin_name;
         $this->version = $version;
 
@@ -103,9 +103,11 @@ class Acf_Front_End_Editor_Public
         if (strpos($value, 'http') === 0 || $value == '#' || $value == '' || filter_var($value, FILTER_VALIDATE_EMAIL) || is_admin()) {
             $value = $value;
         } else {
-            $key = $field['key'];
-            $label = $field['name'];
-            $value = '<d contenteditable data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $field['key'] . '">' . $value . '</d>';
+            if (!in_array($field['key'], $this->exluded_keys) && !str_contains($field['name'], 'is_not_f_editable')) {
+                $key = $field['key'];
+                $label = $field['name'];
+                $value = '<d contenteditable data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $field['key'] . '">' . $value . '</d>';
+            }
         }
         return $value;
     }
