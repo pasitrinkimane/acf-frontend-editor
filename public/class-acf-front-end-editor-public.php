@@ -106,7 +106,7 @@ class Acf_Front_End_Editor_Public
             if (!in_array($field['key'], $this->exluded_keys) && !str_contains($field['name'], 'is_not_f_editable')) {
                 $key = $field['key'];
                 $label = $field['name'];
-                $value = '<d contenteditable data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $field['key'] . '">' . $value . '</d>';
+                $value = '<d contenteditable="false" data-postid="' . $post_id . '" data-name="' . $label . '" data-key="' . $field['key'] . '">' . $value . '</d>';
             }
         }
         return $value;
@@ -152,7 +152,7 @@ class Acf_Front_End_Editor_Public
      */
     function wp_title_targeter($title, $id = null)
     {
-        $value = '<d contenteditable data-postid="' . $id . '" data-name="wp_hd_title" data-key="wp_core">' . $title . '</d>';
+        $value = '<d contenteditable="false" data-postid="' . $id . '" data-name="wp_hd_title" data-key="wp_core">' . $title . '</d>';
         return $value;
     }
 
@@ -164,7 +164,7 @@ class Acf_Front_End_Editor_Public
      */
     function wp_content_targeter($content)
     {
-        $value = '<div contenteditable class="editableHD" data-postid="' . get_the_ID() . '" data-name="wp_hd_content" data-key="wp_core">' . $content . '</div>';
+        $value = '<div contenteditable="false" class="editableHD" data-postid="' . get_the_ID() . '" data-name="wp_hd_content" data-key="wp_core">' . $content . '</div>';
         return $value;
     }
 
@@ -176,7 +176,7 @@ class Acf_Front_End_Editor_Public
      */
     function wp_excerpt_targeter($excerpt)
     {
-        $value = '<d contenteditable data-postid="' . get_the_ID() . '" data-name="wp_hd_excerpt" data-key="wp_core">' . $excerpt . '</d>';
+        $value = '<d contenteditable="false" data-postid="' . get_the_ID() . '" data-name="wp_hd_excerpt" data-key="wp_core">' . $excerpt . '</d>';
         return $value;
     }
 
