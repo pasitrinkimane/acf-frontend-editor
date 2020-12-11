@@ -148,6 +148,7 @@
         },
         initLinks: function () {
             utils.navButton('wp-admin-bar-toggle-actions', 'Enable links', 'child-element');
+            $('a[href]').removeClass('hd-disable-acf-links');
             $('#wp-admin-bar-root-default').on('click', '#wp-admin-bar-toggle-actions', function () {
                 if (!acfVars.links) {
                     $(this).find('a').text('Disable links');
