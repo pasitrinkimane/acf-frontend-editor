@@ -14,8 +14,34 @@
 }
 
 @media only screen and (max-width: 600px) {
-    #frontend-editor {
-        display: none;
+    #wpadminbar ul#frontend-editor {
+        background: #23292d;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #frontend-editor li:first-child .ab-item {
+        text-indent: -100000000px;
+    }
+
+    #frontend-editor .parent-element {
+        width: 40px;
+        height: 40px;
+    }
+
+    #frontend-editor .parent-element:before {
+        content: '';
+        font: normal 32px/1 dashicons;
+        top: 7px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        position: absolute;
+        height: 40px;
+        content: "\f464";
+        top: 2px;
     }
 }
 
