@@ -6,13 +6,12 @@
  * @package           Acf_Front_End_Editor
  *
  * @wordpress-plugin
- * Plugin Name:       ACF Front End Editor
+ * Plugin Name:       Front End Editor
  * Plugin URI:        https://github.com/HorionDigital/advanced-custom-fields-front-end-editor
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Select and edit pages and posts content in front-end.
  * Version:           2.0.2
- * Author:            Horion Digital
- * Author URI:        http://www.horiondigital.com
- * License:           GPL-2.0+
+ * Author:            Growtype
+ * Author URI:        http://www.growtype.com
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       acf-front-end-editor
  * Domain Path:       /languages
